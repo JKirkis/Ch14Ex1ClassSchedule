@@ -18,6 +18,10 @@ namespace ClassSchedule
         // Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IClassScheduleUnitOfWork, ClassScheduleUnitOfWork>();
+            services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            services.AddHttpContextAccessor();
+
             services.AddControllersWithViews();
 
             services.AddMemoryCache();

@@ -6,7 +6,8 @@ namespace ClassSchedule.Controllers
 {
     public class HomeController : Controller
     {
-        private ClassScheduleUnitOfWork data { get; set; }
+        private IHttpContextAccessor http { get; set; }
+        private IClassScheduleUnitOfWork data { get; set; }
         public HomeController(ClassScheduleContext ctx)
         {
             data = new ClassScheduleUnitOfWork(ctx);
