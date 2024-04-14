@@ -8,9 +8,11 @@ namespace ClassSchedule.Controllers
     {
         private IHttpContextAccessor http { get; set; }
         private IClassScheduleUnitOfWork data { get; set; }
-        public ClassController(ClassScheduleContext ctx)
+
+        public ClassController(IClassScheduleUnitOfWork rep, IHttpContextAccessor ctx)
         {
-            data = new ClassScheduleUnitOfWork(ctx);
+            data = rep;
+            http = ctx;
         }
 
         public RedirectToActionResult Index() 
